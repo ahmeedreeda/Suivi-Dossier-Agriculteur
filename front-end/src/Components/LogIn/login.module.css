@@ -1,0 +1,556 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #4caf50;
+    --primary-green-dark: #1b5e20;
+    --secondary-green: #70e000;
+    --earth-brown: #8b5a2b;
+    --earth-light: #d4a373;
+    --text-dark: #2c3e2f;
+    --text-light: #6b7c6e;
+    --background-light: #fef9e8;
+    --white: #ffffff;
+    --error-red: #dc3545;
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--white) 100%);
+    font-family: 'Poppins', 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+}
+
+/* Décoration de fond - Motifs de feuilles */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 L35 20 L30 30 L25 20 Z M30 40 L35 50 L30 60 L25 50 Z' fill='%234caf50' fill-opacity='0.03'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+/* Cercle décoratif flottant 1 */
+.bgCircle1 {
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatCircle 20s ease-in-out infinite;
+}
+
+/* Cercle décoratif flottant 2 */
+.bgCircle2 {
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(112, 224, 0, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatCircleReverse 25s ease-in-out infinite;
+}
+
+@keyframes floatCircle {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-50px, 50px) scale(1.1);
+    }
+}
+
+@keyframes floatCircleReverse {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+}
+
+/* Effet de grain subtil */
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.02) 2px,
+        rgba(0, 0, 0, 0.02) 4px
+    );
+    pointer-events: none;
+}
+
+/* ===== CARD ===== */
+.card {
+    width: 950px;
+    max-width: 100%;
+    display: flex;
+    background: var(--white);
+    border-radius: 28px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== LEFT SIDE LOGO ===== */
+.left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Décoration motifs de feuilles côté gauche */
+.left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 L22.5 12 L30 12 L24 17 L26.5 24 L20 19 L13.5 24 L16 17 L10 12 L17.5 12 Z' fill='%23ffffff' fill-opacity='0.08'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.5;
+    animation: slowMove 30s linear infinite;
+}
+
+@keyframes slowMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+/* Effet de glow lumineux */
+.left::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.logo {
+    width: 200px;
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+    animation: fadeInScale 0.8s ease;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logo:hover {
+    transform: scale(1.03);
+}
+
+/* ===== RIGHT SIDE FORM ===== */
+.right {
+    flex: 1;
+    padding: 50px 45px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ===== FORM ===== */
+.form {
+    width: 100%;
+}
+
+.title {
+    margin-bottom: 32px;
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+}
+
+/* Soulignement décoratif */
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    border-radius: 3px;
+    animation: expandWidth 0.6s ease-out;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 70px;
+        opacity: 1;
+    }
+}
+
+/* ===== INPUTS ===== */
+.input {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: 1.5px solid #e8e8e8;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    outline: none;
+    background: var(--white);
+    transform: translateY(-1px);
+}
+
+.input:hover {
+    border-color: var(--primary-green-light);
+}
+
+.input::placeholder {
+    color: #bdbdbd;
+    font-weight: 400;
+}
+
+/* ===== BUTTON ===== */
+.button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet ripple au survol */
+.button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* ===== LINKS ===== */
+.registerLink {
+    margin-top: 24px;
+    text-align: center;
+    position: relative;
+}
+
+.registerLink::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+}
+
+.registerLink a {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.registerLink a:hover {
+    color: var(--primary-green-dark);
+    gap: 12px;
+    text-decoration: none;
+}
+
+/* Icône plante qui apparaît au survol */
+.registerLink a::before {
+    content: '🌱';
+    font-size: 1rem;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateX(-5px);
+}
+
+.registerLink a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===== ERROR ALERT ===== */
+.errorAlert {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+    border-left: 4px solid var(--error-red);
+    color: #c62828;
+    font-size: 0.85rem;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Success Alert */
+.successAlert {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0f9f0, #e8f5e8);
+    border-left: 4px solid #28a745;
+    color: var(--primary-green-dark);
+    font-size: 0.85rem;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ANIMATION SUPPLEMENTAIRE POUR LE FOCUS ===== */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(46, 125, 50, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(46, 125, 50, 0.4);
+    }
+}
+
+.input:focus {
+    animation: glowPulse 0.5s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .card {
+        width: 800px;
+    }
+    
+    .left {
+        padding: 40px;
+    }
+    
+    .logo {
+        width: 170px;
+    }
+    
+    .right {
+        padding: 40px 35px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+    
+    .card {
+        flex-direction: column;
+        max-width: 450px;
+        border-radius: 28px;
+    }
+    
+    .left {
+        padding: 40px;
+        border-radius: 28px 28px 0 0;
+    }
+    
+    .logo {
+        width: 150px;
+    }
+    
+    .right {
+        padding: 35px 30px;
+        border-radius: 0 0 28px 28px;
+    }
+    
+    .title {
+        font-size: 1.6rem;
+        margin-bottom: 28px;
+    }
+    
+    .input {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .button {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .card {
+        border-radius: 24px;
+    }
+    
+    .left {
+        padding: 30px;
+    }
+    
+    .logo {
+        width: 130px;
+    }
+    
+    .right {
+        padding: 30px 25px;
+    }
+    
+    .title {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+    }
+    
+    .input {
+        padding: 11px 14px;
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    
+    .button {
+        padding: 11px;
+        font-size: 0.9rem;
+    }
+    
+    .registerLink a {
+        font-size: 0.85rem;
+    }
+}

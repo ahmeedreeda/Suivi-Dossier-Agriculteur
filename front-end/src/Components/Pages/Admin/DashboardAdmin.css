@@ -1,0 +1,201 @@
+/* ===== Dashboard Container ===== */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f9;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #000, #1a1a1a);
+  color: white;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  height: 100vh;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid white;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.logo-container img {
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+/* ===== Nav Links ===== */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: #70e000;
+  color: black !important;
+  transform: translateX(5px);
+}
+
+.active-link {
+  background-color: #70e000 !important;
+  color: black !important;
+  font-weight: 600;
+}
+
+/* Sub-links */
+.sub-link {
+  padding-left: 35px;
+  font-size: 0.8rem;
+  background: rgba(255,255,255,0.17);
+  margin-bottom: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sub-link:hover {
+  background: #70e000;
+  color: black !important;
+  transform: translateX(5px);
+}
+
+/* Logout */
+.logout-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: red !important;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: red;
+  color: white !important;
+}
+
+/* ===== Content Area ===== */
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 260px; /* sidebar space desktop */
+  transition: margin-left 0.3s ease;
+}
+
+/* ===== Mobile Header ===== */
+.mobile-header {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 60px;
+    background: #000;
+    z-index: 1000;
+    padding: 0 20px;
+  }
+
+  .menu-btn {
+    position: absolute;
+    left: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .mobile-logo img {
+    height: 40px;
+  }
+
+  .hide-logo {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    border-radius: 0;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 2px 0 20px rgba(0,0,0,0.4);
+  }
+
+  .content {
+    margin-left: 0;
+    padding-top: 80px; /* space for mobile-header */
+  }
+
+  .sidebar.open ~ .content {
+    margin-left: 260px;
+  }
+}
+
+/* Hover & transition */
+.nav-link, .logout-btn, .logo-container img {
+  transition: all 0.3s ease;
+}
+
+/* ===== Sub-links (Ajouter / Rechercher) ===== */
+.nav-link.sub-link {
+  padding-left: 35px; /* مسافة داخلية للتمييز عن الرئيسي */
+  font-size: 0.7rem; /* أصغر من الروابط الرئيسية */
+  background: rgba(255, 255, 255, 0.15); /* شفاف أبيض خفيف */
+  margin-bottom: 6px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hover effect */
+.nav-link.sub-link:hover {
+  background: #b5ec7f; /* أخضر dashboard hover */
+  color: black !important;
+  transform: translateX(5px);
+}
+
+/* Active sub-link */
+.nav-link.sub-link.active-link {
+  background: #b5ec7f !important; /* أخضر ثابت */
+  color: black !important;
+  font-weight: 600;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 768px) {
+  .nav-link.sub-link {
+    padding-left: 25px;
+    font-size: 0.85rem;
+  }
+}

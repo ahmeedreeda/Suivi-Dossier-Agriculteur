@@ -1,0 +1,328 @@
+/* ===== VARIABLES (Couleurs naturelles) ===== */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #4caf50;
+    --primary-green-dark: #1b5e20;
+    --secondary-green: #70e000;
+    --earth-brown: #8b5a2b;
+    --earth-light: #d4a373;
+    --text-dark: #2c3e2f;
+    --text-light: #6b7c6e;
+    --background-light: #fef9e8;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== MAIN HEADER ===== */
+.main-header {
+    width: 100%;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== HEADER TOP ===== */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9f0 100%);
+    padding: 15px 0;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--primary-green), 
+        var(--secondary-green), 
+        var(--primary-green)
+    );
+    transform: scaleX(0);
+    animation: expandLine 0.6s ease forwards;
+}
+
+@keyframes expandLine {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+header img {
+    width: 180px;
+    transition: var(--transition);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+header img:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+/* Bouton logo personnalisé */
+header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: var(--transition);
+}
+
+header button:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== BOTTOM HEADER ===== */
+.bottom-header {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    min-height: 60px;
+    font-weight: 600;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    background: var(--white);
+    position: relative;
+}
+
+/* Nav item style amélioré */
+.bottom-header a {
+    position: relative;
+    color: var(--text-dark);
+    border-radius: 50px;
+    padding: 10px 24px;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+    z-index: 1;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+}
+
+/* Icônes dans la navigation */
+.bottom-header a svg {
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+/* Effet hover moderne */
+.bottom-header a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--secondary-green), var(--primary-green-light));
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50px;
+    z-index: -1;
+}
+
+.bottom-header a:hover::before {
+    clip-path: circle(100% at 50% 50%);
+}
+
+.bottom-header a:hover {
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.bottom-header a:hover svg {
+    transform: translateY(-1px);
+}
+
+/* Effet actif pour le lien courant */
+.bottom-header a.active {
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+}
+
+.bottom-header a.active::before {
+    display: none;
+}
+
+/* Animation de soulignement élégante */
+.bottom-header a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.bottom-header a:hover::after {
+    width: calc(100% - 48px);
+}
+
+/* ===== Responsive Tablet ===== */
+@media (max-width: 992px) {
+    .bottom-header {
+        gap: 1.5rem;
+    }
+    
+    .bottom-header a {
+        padding: 8px 18px;
+        font-size: 0.95rem;
+    }
+    
+    header img {
+        width: 150px;
+    }
+}
+
+/* ===== Responsive Mobile ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 12px 0;
+    }
+    
+    header img {
+        width: 130px !important;
+    }
+
+    .bottom-header {
+        flex-direction: column;
+        min-height: auto;
+        gap: 10px;
+        padding: 20px 0;
+        background: linear-gradient(180deg, var(--white) 0%, #fafaf5 100%);
+    }
+
+    .bottom-header a {
+        width: 85%;
+        text-align: center;
+        justify-content: center;
+        padding: 12px 20px;
+        background: var(--white);
+        border: 1px solid rgba(112, 224, 0, 0.2);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .bottom-header a::before {
+        border-radius: 50px;
+    }
+    
+    .bottom-header a::after {
+        display: none;
+    }
+    
+    .bottom-header a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+    }
+}
+
+/* ===== Responsive Small Mobile ===== */
+@media (max-width: 480px) {
+    header img {
+        width: 110px !important;
+    }
+    
+    .bottom-header a {
+        width: 90%;
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+    
+    .bottom-header a svg {
+        font-size: 1rem;
+    }
+}
+
+/* ===== PAGE CONTENT ===== */
+.page-content {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Animations supplémentaires ===== */
+/* Effet de vague naturelle pour le header */
+.main-header {
+    position: relative;
+}
+
+.main-header::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(112, 224, 0, 0.1) 10px,
+        rgba(112, 224, 0, 0.1) 20px
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.main-header:hover::before {
+    opacity: 1;
+}
+
+/* Style pour le scroll */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green-dark);
+}

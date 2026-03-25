@@ -1,0 +1,123 @@
+/* ===== BtnModifier Styles ===== */
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 95px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet ripple */
+.btn-edit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-edit:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #1976d2, #1565c0);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(33, 150, 243, 0.3);
+}
+
+.btn-edit:active {
+    transform: translateY(0);
+}
+
+.btn-edit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-edit svg {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-edit:hover svg {
+    transform: scale(1.1);
+}
+
+.btn-text {
+    display: inline-block;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .btn-edit {
+        padding: 7px 14px;
+        min-width: 85px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+    
+    .btn-edit svg {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-edit {
+        padding: 6px 12px;
+        min-width: 75px;
+        font-size: 0.75rem;
+        gap: 5px;
+    }
+    
+    .btn-edit svg {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-edit {
+        padding: 5px 10px;
+        min-width: 65px;
+        font-size: 0.7rem;
+        gap: 4px;
+        border-radius: 6px;
+    }
+    
+    .btn-edit svg {
+        font-size: 0.7rem;
+    }
+}
+
+/* Animation de chargement */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-edit svg.fa-spinner {
+    animation: spin 1s linear infinite;
+}

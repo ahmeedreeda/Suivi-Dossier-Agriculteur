@@ -1,0 +1,719 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #4caf50;
+    --primary-green-dark: #1b5e20;
+    --secondary-green: #70e000;
+    --text-dark: #2c3e2f;
+    --text-light: #6b7c6e;
+    --background-light: #fef9e8;
+    --white: #ffffff;
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f5;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --blue: #2196f3;
+    --red: #f44336;
+    --green: #4caf50;
+    --orange: #ff9800;
+    --yellow: #ffc107;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--gray-50) 100%);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Decoration */
+.bgDecoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bgCircle1 {
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatCircle 20s ease-in-out infinite;
+}
+
+.bgCircle2 {
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(112, 224, 0, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatCircleReverse 25s ease-in-out infinite;
+}
+
+@keyframes floatCircle {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-50px, 50px) scale(1.1);
+    }
+}
+
+@keyframes floatCircleReverse {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--white);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.backButton:hover {
+    transform: translateX(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.titleIcon {
+    color: var(--primary-green);
+    font-size: 1.8rem;
+}
+
+/* ===== CLIENT CARD ===== */
+.clientCard {
+    background: var(--white);
+    border-radius: 24px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.clientCard:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.cardHeader {
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+}
+
+.cardIcon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.cardHeader h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* ===== INFO GRID ===== */
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 25px;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: var(--gray-50);
+    border-radius: 16px;
+    transition: var(--transition);
+}
+
+.infoItem:hover {
+    background: var(--gray-100);
+    transform: translateX(5px);
+}
+
+.infoIcon {
+    width: 45px;
+    height: 45px;
+    background: rgba(46, 125, 50, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    font-size: 1.1rem;
+}
+
+.infoContent {
+    flex: 1;
+}
+
+.infoLabel {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.infoValue {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.roleBadge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-green-light), var(--secondary-green));
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* ===== DOSSIERS CARD ===== */
+.dossiersCard {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.dossiersCard:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.dossierCount {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* ===== DOSSIERS GRID ===== */
+.dossiersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 25px;
+}
+
+.dossierCard {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    transition: var(--transition);
+    position: relative;
+}
+
+.dossierCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Status border */
+.dossierCard.statusInProgress {
+    border-left: 4px solid var(--blue);
+}
+.dossierCard.statusPending {
+    border-left: 4px solid var(--orange);
+}
+.dossierCard.statusCompleted {
+    border-left: 4px solid var(--green);
+}
+.dossierCard.statusRejected {
+    border-left: 4px solid var(--red);
+}
+.dossierCard.statusDefault {
+    border-left: 4px solid var(--gray-300);
+}
+
+.dossierHeader {
+    background: var(--gray-50);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.dossierId {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.statusBadge.statusInProgress {
+    background: #e3f2fd;
+    color: var(--blue);
+}
+.statusBadge.statusPending {
+    background: #fff3e0;
+    color: var(--orange);
+}
+.statusBadge.statusCompleted {
+    background: #e8f5e9;
+    color: var(--green);
+}
+.statusBadge.statusRejected {
+    background: #ffebee;
+    color: var(--red);
+}
+.statusBadge.statusDefault {
+    background: var(--gray-100);
+    color: var(--text-light);
+}
+
+.dossierBody {
+    padding: 20px;
+}
+
+.dossierInfo {
+    margin-bottom: 15px;
+}
+
+.dossierInfo label {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.dossierInfo p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.description {
+    line-height: 1.5;
+}
+
+.dossierComment {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fef9e8;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    border-left: 3px solid var(--primary-green);
+}
+
+.dossierComment svg {
+    color: var(--primary-green);
+    margin-top: 2px;
+}
+
+/* ===== EMPTY STATE ===== */
+.emptyState {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-light);
+}
+
+.emptyIcon {
+    font-size: 3rem;
+    color: var(--gray-300);
+    margin-bottom: 15px;
+}
+
+.emptyState p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* ===== LOADING STATE ===== */
+.loadingContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: linear-gradient(135deg, var(--background-light), var(--gray-50));
+}
+
+.loadingSpinner {
+    font-size: 3rem;
+    color: var(--primary-green);
+}
+
+.loadingContainer p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* ===== ERROR STATE ===== */
+.errorContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: linear-gradient(135deg, var(--background-light), var(--gray-50));
+    text-align: center;
+    padding: 40px;
+}
+
+.errorIcon {
+    font-size: 3rem;
+    color: var(--red);
+}
+
+.errorContainer h3 {
+    margin: 0;
+    color: var(--red-dark);
+}
+
+.errorContainer p {
+    color: var(--text-light);
+}
+
+/* ===== BUTTON ===== */
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.backBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .infoGrid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .dossiersGrid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    .dossierHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .cardHeader {
+        padding: 15px 20px;
+    }
+    
+    .cardHeader h2 {
+        font-size: 1.1rem;
+    }
+    
+    .infoItem {
+        padding: 10px;
+    }
+    
+    .infoIcon {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+    
+    .infoValue {
+        font-size: 0.85rem;
+    }
+    
+    .dossierCard {
+        border-radius: 16px;
+    }
+    
+    .dossierHeader {
+        padding: 12px 15px;
+    }
+    
+    .dossierBody {
+        padding: 15px;
+    }
+}
+
+/* Ajoutez ces styles à la fin de votre fichier DetailsClient.module.css */
+
+/* Dossier Actions */
+.dossierActions {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+  text-align: right;
+}
+
+.viewDetailsBtn {
+  background: linear-gradient(135deg, #66ea75 0%, #4ba258 100%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.viewDetailsBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.viewDetailsBtn svg {
+  font-size: 12px;
+}
+
+/* Animation pour le bouton */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.viewDetailsBtn:active {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Amélioration du responsive pour les actions */
+@media (max-width: 768px) {
+  .dossierActions {
+    text-align: center;
+  }
+  
+  .viewDetailsBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+}
+
+/* Style pour les tooltips (optionnel) */
+.viewDetailsBtn {
+  position: relative;
+}
+
+.viewDetailsBtn:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Amélioration de l'affichage du commentaire */
+.dossierComment {
+  margin-top: 15px;
+  padding: 12px;
+  background: #fff3cd;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #856404;
+  border-left: 3px solid #ffc107;
+}
+
+.dossierComment svg:first-child {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.dossierComment span {
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* Animation pour les cartes de dossiers */
+.dossierCard {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style pour le chargement des cartes avec délai */
+.dossiersGrid .dossierCard:nth-child(1) { animation-delay: 0.1s; }
+.dossiersGrid .dossierCard:nth-child(2) { animation-delay: 0.2s; }
+.dossiersGrid .dossierCard:nth-child(3) { animation-delay: 0.3s; }
+.dossiersGrid .dossierCard:nth-child(4) { animation-delay: 0.4s; }
+.dossiersGrid .dossierCard:nth-child(5) { animation-delay: 0.5s; }
+.dossiersGrid .dossierCard:nth-child(6) { animation-delay: 0.6s; }
+
+/* Amélioration du scroll */
+.dossiersGrid {
+  max-height: 800px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.dossiersGrid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dossiersGrid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.dossiersGrid::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+.dossiersGrid::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}

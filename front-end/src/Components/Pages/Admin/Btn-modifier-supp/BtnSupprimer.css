@@ -1,0 +1,64 @@
+/* ===== BtnSupprimer Styles ===== */
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 90px;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #d32f2f, #c62828);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.btn-delete:active {
+    transform: translateY(0);
+}
+
+.btn-delete:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-delete svg {
+    font-size: 0.9rem;
+}
+
+.btn-text {
+    display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-delete {
+        padding: 6px 10px;
+        min-width: 70px;
+        font-size: 0.7rem;
+    }
+    
+    .btn-delete svg {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-delete {
+        padding: 5px 8px;
+        min-width: 60px;
+        font-size: 0.65rem;
+        gap: 4px;
+    }
+}
