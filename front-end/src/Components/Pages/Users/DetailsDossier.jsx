@@ -133,6 +133,12 @@ function DetailsDossier() {
         setSelectedImage(null);
     };
 
+
+
+
+
+
+
     const downloadFile = (fileUrl, fileName) => {
         window.open(`http://localhost/App/back-end/${fileUrl}`, "_blank");
     };
@@ -166,8 +172,8 @@ function DetailsDossier() {
         .then(res => {
             if (res.data.success) {
                 alert(`Document "${docName}" modifié avec succès ✅`);
+                 console.log("RESPONSE:", res.data);
 
-                // 🔹 تحديث الحالة المحلية للملف
                 setDossierDoc(prev =>
                     prev.map(d =>
                         Number(d.id) === Number(docId)
@@ -187,6 +193,9 @@ function DetailsDossier() {
             setUploading(false);
         });
 };
+
+
+    // -------------------supp dossier ---------------------------------------
     const handleDeleteDossier = async () => {
         if (window.confirm("⚠️ Êtes-vous sûr de vouloir supprimer ce dossier ? Cette action est irréversible.")) {
             try {

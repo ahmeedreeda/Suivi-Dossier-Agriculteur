@@ -23,6 +23,7 @@ import Dossiers from './Components/Pages/Users/Dossiers';
 import DetailsDossier from './Components/Pages/Users/DetailsDossier';
 import DetailsDossierAdmin from './Components/Pages/Admin/DetailsDossierAdmin';
 import DetailsClient from './Components/Pages/Admin/DetailsClient';
+import Notifications from './Components/Pages/Users/Notifications';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
                   <Route path='SuiviDemandes' element={<SuiviDemandes/>}/>
                   <Route path='Dossiers' element={<Dossiers/>}/>
                   <Route path='DetailsDossier/:id_dossier' element={<DetailsDossier/>}/>
+                  <Route path='Notifications' element={<Notifications/>}/>
+
 
 
             </Route>

@@ -46,6 +46,7 @@ function DetailsDossierAdmin() {
     useEffect(() => {
         axios.post("http://localhost/App/back-end/getFullDossier.php", { id: id_dossier })
             .then(res => {setDossier(Array.isArray(res.data) ? res.data : [res.data])
+                console.log(res.data[0].CIN)
             })
             .catch(err => console.error(err));
     }, [id_dossier]);
@@ -102,6 +103,11 @@ function DetailsDossierAdmin() {
             setShowSelect(false);
             setLoading(false);
         });
+
+        axios.post("http://localhost/App/back-end/AddNotification.php",{select : select , CIN : dossier[0].CIN , idDossier : id_dossier}).then(
+            res => res.data
+        ).catch( err => console.error(err));
+
     };
 
     const handleCommente = () => {

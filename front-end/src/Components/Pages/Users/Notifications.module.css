@@ -1,0 +1,380 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #4caf50;
+    --primary-green-dark: #1b5e20;
+    --secondary-green: #70e000;
+    --text-dark: #2c3e2f;
+    --text-light: #6b7c6e;
+    --background-light: #fef9e8;
+    --white: #ffffff;
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f5;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --blue: #2196f3;
+    --red: #f44336;
+    --green: #4caf50;
+    --orange: #ff9800;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--gray-50) 100%);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Décoration de fond */
+.bgDecoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bgCircle1 {
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatCircle 20s ease-in-out infinite;
+}
+
+.bgCircle2 {
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(112, 224, 0, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatCircleReverse 25s ease-in-out infinite;
+}
+
+@keyframes floatCircle {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-50px, 50px) scale(1.1);
+    }
+}
+
+@keyframes floatCircleReverse {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.contentWrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.headerIcon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(46, 125, 50, 0);
+    }
+}
+
+.headerIcon svg {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* ===== LOADING STATE ===== */
+.loadingState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    gap: 15px;
+}
+
+.spinner {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+}
+
+.loadingState p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ===== ERROR STATE ===== */
+.errorState {
+    text-align: center;
+    padding: 60px;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.errorState svg {
+    font-size: 3rem;
+    color: var(--red);
+    margin-bottom: 20px;
+}
+
+.errorState p {
+    color: var(--text-dark);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.retryBtn {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.retryBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== EMPTY STATE ===== */
+.emptyState {
+    text-align: center;
+    padding: 60px;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.emptyIcon {
+    font-size: 4rem;
+    color: var(--gray-300);
+    margin-bottom: 20px;
+}
+
+.emptyState h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin: 0 0 10px;
+}
+
+.emptyState p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ===== NOTIFICATIONS LIST ===== */
+.notificationsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notificationCard {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.notificationCard:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Couleurs selon type */
+.notificationCard.success {
+    border-left-color: var(--green);
+    background: linear-gradient(135deg, var(--white), #f0f9f0);
+}
+.notificationCard.warning {
+    border-left-color: var(--orange);
+    background: linear-gradient(135deg, var(--white), #fff5e8);
+}
+.notificationCard.error {
+    border-left-color: var(--red);
+    background: linear-gradient(135deg, var(--white), #ffefef);
+}
+.notificationCard.info {
+    border-left-color: var(--blue);
+    background: linear-gradient(135deg, var(--white), #ecf5fe);
+}
+
+.notificationIcon {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notificationCard.success .notificationIcon {
+    color: var(--green);
+}
+.notificationCard.warning .notificationIcon {
+    color: var(--orange);
+}
+.notificationCard.error .notificationIcon {
+    color: var(--red);
+}
+.notificationCard.info .notificationIcon {
+    color: var(--blue);
+}
+
+.notificationContent {
+    flex: 1;
+}
+
+.message {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-light);
+}
+
+.meta svg {
+    font-size: 0.7rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .headerIcon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .headerIcon svg {
+        font-size: 1.5rem;
+    }
+    
+    .title {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .notificationCard {
+        padding: 15px;
+    }
+    
+    .notificationIcon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .message {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .loadingState,
+    .errorState,
+    .emptyState {
+        padding: 40px 20px;
+    }
+    
+    .emptyIcon {
+        font-size: 3rem;
+    }
+    
+    .emptyState h3 {
+        font-size: 1rem;
+    }
+}

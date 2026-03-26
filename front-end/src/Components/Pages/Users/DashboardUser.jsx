@@ -65,7 +65,7 @@ function DashboardUser() {
                 </NavLink>
           </li>
             <li className="nav-item">
-            <NavLink to="reservations" className={({ isActive }) => "nav-link " + (isActive ? "active-link" : "")}>
+            <NavLink to="Notifications" className={({ isActive }) => "nav-link " + (isActive ? "active-link" : "")}>
                 <FontAwesomeIcon icon={faBell} /> Notifications
                 </NavLink>
           </li>

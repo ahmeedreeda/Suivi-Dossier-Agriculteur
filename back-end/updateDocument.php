@@ -73,12 +73,12 @@ if (!move_uploaded_file($file['tmp_name'], $path)) {
 
 try {
     // Récupérer ancien fichier
-    $stmt_old = $pdo->prepare("SELECT fichier FROM dossier_documents WHERE id = ?");
+    $stmt_old = $conn->prepare("SELECT fichier FROM dossier_documents WHERE id = ?");
     $stmt_old->execute([$doc_id]);
     $old_file = $stmt_old->fetchColumn();
 
     // Update fichier
-    $stmt = $pdo->prepare("UPDATE dossier_documents SET fichier = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE dossier_documents SET fichier = ? WHERE id = ?");
     $stmt->execute([$path, $doc_id]);
 
     if ($stmt->rowCount() > 0 || $old_file !== null) {
