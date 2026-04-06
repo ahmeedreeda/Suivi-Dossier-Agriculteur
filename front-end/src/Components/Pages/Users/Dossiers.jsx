@@ -148,7 +148,7 @@ function Dossiers() {
             <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
             <input
               type="text"
-              placeholder="Rechercher par ID, CIN ou service..."
+              placeholder="Rechercher par ID ou service..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={styles.searchInput}

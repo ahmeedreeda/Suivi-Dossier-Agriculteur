@@ -1,13 +1,28 @@
-import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import  { useState, useEffect, use } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUsers, faRightFromBracket, faFileCircleCheck, faBars, faXmark, faFolder, faChartLine, faUserPlus, faSearch, faFileCirclePlus, faFolderOpen, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faRightFromBracket, faBars, faXmark, faFolder, faChartLine, faFileCirclePlus, faBell } from "@fortawesome/free-solid-svg-icons";
 import "./DashboardUser.css"
+import axios from "axios"
 function DashboardUser() {
 
      const location = useLocation()
         const navigate = useNavigate();
         const [isOpen, setIsOpen] = useState(false);
+        const user = JSON.parse(localStorage.getItem("user"));
+        const [no_read_notf , setNo_read_notf] = useState({})
+        useEffect(() => {
+          axios.post("http://localhost/App/back-end/NotifNoRead.php" , {cin : user.cin }).then(
+            res => {
+              setNo_read_notf(res.data);
+              console.log(res.data)
+            }
+          ).catch(
+            err => console.error(err)
+          )
+        },[])
+
+        
 
 
 
@@ -18,6 +33,7 @@ function DashboardUser() {
             navigate("/login"); 
         }
     };
+
   return (
     <div className="dashboard-container">
 
@@ -65,12 +81,18 @@ function DashboardUser() {
                 </NavLink>
           </li>
             <li className="nav-item">
-            <NavLink to="Notifications" className={({ isActive }) => "nav-link " + (isActive ? "active-link" : "")}>
-                <FontAwesomeIcon icon={faBell} /> Notifications
-                </NavLink>
+          <NavLink to="Notifications" className={({ isActive }) => "nav-link " + (isActive ? "active-link" : "")}>
+            <div className="notif-item">
+              <FontAwesomeIcon icon={faBell} />
+              <span>Notifications</span>
+              {no_read_notf?.total > 0 && (
+                <span className="notif-badge">{no_read_notf.total}</span>
+              )}
+            </div>
+          </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="statistique" className={({isActive}) => "nav-link " + (isActive ? "active-link" : "")}>
+            <NavLink to="Statistique" className={({isActive}) => "nav-link " + (isActive ? "active-link" : "")}>
               <FontAwesomeIcon icon={faChartLine} /> Statistiques
             </NavLink>
           </li>

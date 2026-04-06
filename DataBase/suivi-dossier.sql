@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 26 mars 2026 à 14:56
+-- Généré le : sam. 28 mars 2026 à 15:53
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -72,7 +72,9 @@ INSERT INTO `dossiers` (`id_dossier`, `CIN`, `id_service`, `date_depot`, `statut
 (31, 'reda', 1, '2026-03-25 10:17:33', 'En cours', ''),
 (33, 'asya', 1, '2026-03-26 01:06:10', 'Accepte', 'rah chi wra9 jjhjhj'),
 (34, 'reda', 1, '2026-03-26 10:19:56', 'Accepte', ''),
-(35, 'mohamed', 1, '2026-03-26 10:32:27', 'Accepte', 'hjhjgjhgjhgjhfgf');
+(35, 'mohamed', 1, '2026-03-26 10:32:27', 'Accepte', 'hjhjgjhgjhgjhfgf'),
+(36, 'reda', 1, '2026-03-26 14:01:44', 'En attente', ''),
+(37, 'reda', 1, '2026-03-26 14:47:38', 'En attente', '');
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,10 @@ INSERT INTO `dossier_documents` (`id`, `id_dossier`, `id_document`, `fichier`) V
 (52, 34, 3, 'uploads/dossier_34/1774520417_bb73b699dba1fa9faf4d58ca2805af73.jpg'),
 (53, 35, 1, 'uploads/dossier_35/1774521172_ASYA.jpg'),
 (54, 35, 2, 'uploads/dossier_35/1774521219_69c50b83b949d.png'),
-(55, 35, 3, 'uploads/dossier_35/1774521172_Capture d’écran 2025-01-19 211203.png');
+(55, 35, 3, 'uploads/dossier_35/1774521172_Capture d’écran 2025-01-19 211203.png'),
+(56, 36, 1, 'uploads/dossier_36/1774533750_React6definition.pdf'),
+(57, 36, 2, 'uploads/dossier_36/1774533750_Haddouche Jamal rapport 20 septembre 2023.pdf'),
+(58, 36, 3, 'uploads/dossier_36/1774533750_TP CONTROLLER.pdf');
 
 -- --------------------------------------------------------
 
@@ -773,13 +778,13 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT pour la table `dossiers`
 --
 ALTER TABLE `dossiers`
-  MODIFY `id_dossier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_dossier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `dossier_documents`
 --
 ALTER TABLE `dossier_documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT pour la table `notifications`

@@ -8,14 +8,14 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 include 'connecterAuBD.php';
 $data = json_decode(file_get_contents("php://input"),true);
-$cin = $data["CIN"];
+$cin = $data["cin"];
 
 
-$sql = "SELECT * FROM dossiers WHERE CIN = ? ORDER BY id_dossier DESC";
+$sql = "SELECT COUNT(*) as total FROM notifications WHERE user_id = ? AND is_read = 0";
 $stm = $conn->prepare($sql);
 $stm->execute([$cin]);
-$dossiers = $stm->fetchAll(PDO::FETCH_ASSOC);
-echo json_encode($dossiers);
+$notif = $stm->fetch(PDO::FETCH_ASSOC);
+echo json_encode($notif);
 
 
 ?>

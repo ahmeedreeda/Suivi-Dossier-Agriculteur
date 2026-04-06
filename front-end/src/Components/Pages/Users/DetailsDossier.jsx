@@ -47,6 +47,7 @@ function DetailsDossier() {
         axios.post("http://localhost/App/back-end/get_Dossier_Id.php", { id: id_dossier })
             .then(res => {
                 setDossier(Array.isArray(res.data) ? res.data : [res.data]);
+                console.log(res.data)
                 setLoading(false);
             })
             .catch(err => {
@@ -425,6 +426,7 @@ function DetailsDossier() {
                                                 >
                                                     <FontAwesomeIcon icon={faDownload} />
                                                 </button>
+                                                
                                                 <input 
                                                     type="file"
                                                     id={`file-${uploaded.id}`}
@@ -432,6 +434,9 @@ function DetailsDossier() {
                                                     onChange={(e) => handleUpdateFile(e, uploaded.id, doc.nom_document)}
                                                     accept=".jpg,.jpeg,.png,.pdf"
                                                 />
+
+                                                {
+                                                    (dossier[0].statut === "En attente")?
                                                 <button 
                                                     className={styles.editDocBtn}
                                                     title="Modifier le document"
@@ -443,7 +448,9 @@ function DetailsDossier() {
                                                     ) : (
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     )}
-                                                </button>
+                                                </button>:null
+                                                }
+
                                             </div>
                                         </div>
                                     ) : (

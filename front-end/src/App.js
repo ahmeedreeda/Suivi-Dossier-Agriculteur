@@ -24,6 +24,8 @@ import DetailsDossier from './Components/Pages/Users/DetailsDossier';
 import DetailsDossierAdmin from './Components/Pages/Admin/DetailsDossierAdmin';
 import DetailsClient from './Components/Pages/Admin/DetailsClient';
 import Notifications from './Components/Pages/Users/Notifications';
+import Statistiques from './Components/Pages/Users/Statistiques';
+import AdminStatistiques from './Components/Pages/Admin/AdminStatistiques';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
                   <Route path='Dossiers' element={<Dossiers/>}/>
                   <Route path='DetailsDossier/:id_dossier' element={<DetailsDossier/>}/>
                   <Route path='Notifications' element={<Notifications/>}/>
+                  <Route path='Statistique' element={<Statistiques/>}/>
+
 
 
 
@@ -56,6 +60,8 @@ function App() {
                   <Route path='Demandes' element={<Demandes/>}/>
                   <Route path='Details_Dossier/:id_dossier' element={<DetailsDossierAdmin/>}/>
                   <Route path='agriculteur/detailsClient/:cin' element={<DetailsClient/>}/>
+                  <Route path='Statistiques' element={<AdminStatistiques/>}/>
+
 
 
 

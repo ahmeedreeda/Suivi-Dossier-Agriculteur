@@ -1,0 +1,210 @@
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #4caf50;
+    --secondary-green: #70e000;
+    --background-light: #fef9e8;
+    --white: #ffffff;
+    --gray-100: #f1f3f5;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s ease;
+}
+
+.container {
+    padding: 30px;
+    background: linear-gradient(135deg, var(--background-light) 0%, #f8f9fa 100%);
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #6b7c6e;
+    font-size: 1rem;
+}
+
+/* Summary Cards */
+.statsSummary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.summaryCard {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    min-width: 160px;
+    justify-content: center;
+}
+
+.summaryCard:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.summaryCard svg {
+    font-size: 2rem;
+    color: var(--primary-green);
+}
+
+.summaryNumber {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    line-height: 1;
+}
+
+.summaryLabel {
+    font-size: 0.85rem;
+    color: #6b7c6e;
+    font-weight: 500;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+}
+
+/* Cards */
+.card {
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.cardHeader {
+    background: linear-gradient(135deg, var(--primary-green), #1b5e20);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.cardHeader svg {
+    font-size: 1.4rem;
+}
+
+.cardHeader h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.chartWrapper {
+    padding: 20px;
+    flex: 1;
+    min-height: 320px;
+    position: relative;
+}
+
+/* Empty state inside card */
+.emptyChart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 20px;
+    color: #6b7c6e;
+    text-align: center;
+}
+
+.emptyChart svg {
+    font-size: 3rem;
+    color: #cbd5e0;
+}
+
+.emptyChart p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Loading & error states */
+.loadingContainer,
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 20px;
+    text-align: center;
+}
+
+.spinner {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+}
+
+.errorIcon {
+    font-size: 3rem;
+    color: #f44336;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .cardHeader h2 {
+        font-size: 1rem;
+    }
+    .summaryCard {
+        padding: 15px 20px;
+        min-width: 120px;
+    }
+    .summaryCard svg {
+        font-size: 1.5rem;
+    }
+    .summaryNumber {
+        font-size: 1.5rem;
+    }
+    .summaryLabel {
+        font-size: 0.75rem;
+    }
+    .chartWrapper {
+        min-height: 280px;
+        padding: 15px;
+    }
+}

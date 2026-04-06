@@ -61,13 +61,6 @@ function DashboardAdmin() {
                                 >
                                     <FontAwesomeIcon icon={faUserPlus} /> Ajouter
                                 </NavLink>
-
-                                <NavLink
-                                    to="/admin/agriculteur/rechercher"
-                                    className={({ isActive }) => "nav-link sub-link" + (isActive ? " active-link" : "")}
-                                >
-                                    <FontAwesomeIcon icon={faSearch} /> Rechercher
-                                </NavLink>
                             </>
                         )}
                     </li>
@@ -84,7 +77,7 @@ function DashboardAdmin() {
                  
                     </li>
                     <li className="nav-item">
-                        <NavLink to="statistique" className={({ isActive }) => "nav-link " + (isActive ? "active-link" : "")}>
+                        <NavLink to="Statistiques" className={({ isActive }) => "nav-link " + (isActive ? "active-link" : "")}>
                             <FontAwesomeIcon icon={faChartLine} /> Statistiques
                         </NavLink>
                     </li>

@@ -34,6 +34,9 @@ function DetailsClient() {
   const [dossiers, setDossiers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [villes,setVilles] = useState([]);
+    const [regions,setRegions] = useState([]);
+
 
   useEffect(() => {
     const fetchClientDetails = async () => {
@@ -59,6 +62,27 @@ function DetailsClient() {
       fetchClientDetails();
     }
   }, [cin]);
+
+      useEffect(() => {
+        axios.get("http://localhost/App/back-end/getRegion.php")
+            .then(res => setRegions(res.data))
+            .catch(err => console.error(err));
+    }, []);
+
+    useEffect(() => {
+        axios.get("http://localhost/App/back-end/getVille.php")
+            .then(res => setVilles(res.data))
+            .catch(err => console.error(err));
+    }, []);
+        const getRegionName = (id) => {
+        const region = regions.find(r => Number(r.id) === Number(id));
+        return region ? region.region : "Non spécifié";
+    };
+
+    const getVilleName = (id) => {
+        const ville = villes.find(v => Number(v.id) === Number(id));
+        return ville ? ville.ville : "Non spécifié";
+    };
 
   const getStatusConfig = (statut) => {
     switch(statut?.toLowerCase()) {
@@ -226,7 +250,7 @@ function DetailsClient() {
                 <div className={styles.infoContent}>
                   <span className={styles.infoLabel}>Localisation</span>
                   <p className={styles.infoValue}>
-                    Région: {user.id_region} | Ville: {user.id_ville}
+                    Région: {getRegionName(user.id_region)} | Ville: {getVilleName(user.id_ville)}
                   </p>
                 </div>
               </div>
